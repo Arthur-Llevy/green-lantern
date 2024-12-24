@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import symbolOn from "./assets/pictures/symbol-on.png";
 import symbolOff from "./assets/pictures/symbol-off.png";
 import { useState } from 'react';
+import { styles } from './styles';
 
 export default function App() {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <View style={isActive ? styles.containerOn : styles.containerOff}>
+      <Text style={styles.text}>Clique na imagem abaixo</Text>
       <TouchableOpacity onPress={changeAtive}>
         <Image source={isActive ? symbolOn : symbolOff} />
       </TouchableOpacity>
@@ -21,17 +23,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  containerOn: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  containerOff: {
-    flex: 1,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
